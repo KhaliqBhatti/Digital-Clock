@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital-Clock</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+
+        body {
+            background: linear-gradient(45deg, #1870ed 0, #f18f88 100%);
+            font-family: 'Montserrat', 'sans-serif';
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box-shadow {
+            box-shadow: 0px 0px 40px 5px rgb(0, 186, 207);
+        }
+
+        .box-shadow>h1 {
+            text-shadow: 2px 1px 5px rgb(196, 249, 255);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="main-div w-full h-screen flex justify-center   items-center">
+        <div class="box-shadow e-full  sm:w-[80vw] md:w-[60vw]  lg:w-[35vw] flex justify-around items-center rounded-xl border-2 border-lime-500 p-1">
+            <h1 id="hours" class="text-6xl"></h1>
+            
+        </div>
+    </div>
+
+
+
+
+    <script>
+        let set = setInterval(() => {
+            let date = new Date()
+            let hour = date.getHours()
+            let minute = date.getMinutes()
+            let second = date.getSeconds()
+            let h1 = document.getElementsByTagName('h1')[0];
+            // let ampm = document.getElementById('ampm')
+
+
+
+            if (hour > 12) {
+                hour = hour - 12
+            }
+            if (hour < 10) {
+                hour = '0' + hour
+            }
+            if (minute < 10) {
+                minute = '0' + minute
+            }
+            if (second < 10) {
+                second = '0' + second
+            }
+            if (hour <= 12) {
+                ampm = 'AM'
+            }
+            else if(hours>12) {
+                ampm = "PM"
+            }
+
+            h1.innerHTML = `${hour}  : ${minute} : ${second} ${ampm} `
+        }, 1000)
+
+    </script>
+
+</body>
+
+</html>
